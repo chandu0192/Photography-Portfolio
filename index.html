@@ -5,9 +5,273 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photography Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Body and Main Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9fafb;
+            color: #374151;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Sections */
+        .section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #111827;
+        }
+
+        .nav {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: #4b5563;
+            transition-property: color;
+            transition-duration: 200ms;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+
+        /* Home Section */
+        .home-section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            text-align: center;
+        }
+
+        .home-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .home-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-photo-container {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-photo {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .photo-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-image-container {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-paragraph {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+
+        .contact-btn {
+            width: 100%;
+            background-color: #4f46e5;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 0;
+            border: 1px solid #4f46e5;
+            border-radius: 0.5rem;
+            transition-property: background-color;
+            transition-duration: 200ms;
+        }
+
+        .contact-btn:hover {
+            background-color: #4338ca;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        /* Tablet */
+        @media (min-width: 640px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Medium Devices */
+        @media (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+            .home-title {
+                font-size: 3rem;
+            }
+            .home-subtitle {
+                font-size: 1.25rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .about-content {
+                flex-direction: row;
+            }
+            .about-image-container {
+                width: 50%;
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+            .about-text {
+                width: 50%;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
     <!-- Header -->
     <header class="header">
